@@ -10,7 +10,7 @@ function showAlertError() {
 
 let inputArray = document.querySelectorAll("input"); //obtengo los input
 let checkbox = document.getElementById("terminos"); //obtengo el checkbox
-
+let regBtn = document.getElementById("regBtn"); //obtengo el botón
 
 function checkboxValidation(){ //validar checkbox
     if(!checkbox.checked){
@@ -29,13 +29,13 @@ function inputValidation(){ //validar campos
     if (count !== 0){
         showAlertError();
     }
-    
 }
 
-regBtn.addEventListener("click", function(){
-    inputValidation();
-    checkboxValidation()
-})
+// regBtn.addEventListener("click", function(){
+//     inputValidation();
+//     checkboxValidation()
+// })
+
 
 
 function passwordsAreEqual(){
@@ -45,11 +45,16 @@ function passwordsAreEqual(){
     } else if (document.getElementById("password1").value === document.getElementById("password2").value) {
         showAlertSuccess();
         // console.log("confirmación");
-
     }
 }
 
+function fullValidation(){
+    inputValidation();
+    checkboxValidation();
+    passwordsAreEqual();
+}
+
 let form = document.querySelector("form");
-form.addEventListener("submit", passwordsAreEqual);
+form.addEventListener("submit", fullValidation);
 
 
