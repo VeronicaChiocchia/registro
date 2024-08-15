@@ -18,16 +18,9 @@ function passwordsAreEqual(){
         showAlertError();
     } else {
         showAlertSuccess()
+        console.log
     }
 }
 
 regBtn.addEventListener("click", passwordsAreEqual);
 
-
-
-// function Pedro() {
-//     if (!password1Value) {
-//         console.log("hola");
-//     }
-// }
-// Pedro();
