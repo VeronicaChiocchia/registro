@@ -5,3 +5,29 @@ function showAlertSuccess() {
 function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
 }
+
+let password1 = document.getElementById("password1");
+let password1Value = password1.value;
+let password2 = document.getElementById("password2");
+let password2Value = password2.value;
+let regBtn = document.getElementById("regBtn")
+
+
+function passwordsAreEqual(){
+    if (password1Value !== password2Value) {
+        showAlertError();
+    } else {
+        showAlertSuccess()
+    }
+}
+
+regBtn.addEventListener("click", passwordsAreEqual);
+
+
+
+// function Pedro() {
+//     if (!password1Value) {
+//         console.log("hola");
+//     }
+// }
+// Pedro();
