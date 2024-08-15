@@ -7,6 +7,7 @@ function showAlertError() {
 }
 
 
+
 let inputArray = document.querySelectorAll("input"); //obtengo los input
 let checkbox = document.getElementById("terminos"); //obtengo el checkbox
 
@@ -35,3 +36,20 @@ regBtn.addEventListener("click", function(){
     inputValidation();
     checkboxValidation()
 })
+
+
+function passwordsAreEqual(){
+    if (document.getElementById("password1").value !== document.getElementById("password2").value) {
+        showAlertError();
+        // console.log("incorrecto");
+    } else if (document.getElementById("password1").value === document.getElementById("password2").value) {
+        showAlertSuccess();
+        // console.log("confirmación");
+
+    }
+}
+
+let form = document.querySelector("form");
+form.addEventListener("submit", passwordsAreEqual);
+
+
