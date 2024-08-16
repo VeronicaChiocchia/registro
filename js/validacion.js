@@ -6,55 +6,49 @@ function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
 }
 
+//obteniendo array de inputs
+let inputArray = document.getElementsByClassName("form-control");
+//obteniendo input checkbox
+let checkbox = document.getElementById("terminos");
+//obteniendo boton registrarse
+const regBtn = document.getElementById("regBtn");
 
+//obteniendo los inputs de las contraseñas
+let password1 =document.getElementById("password1");
+let password2 =document.getElementById("password2");
 
-let inputArray = document.querySelectorAll("input"); //obtengo los input
-let checkbox = document.getElementById("terminos"); //obtengo el checkbox
-let regBtn = document.getElementById("regBtn"); //obtengo el botón
-
-function checkboxValidation(){ //validar checkbox
-    if(!checkbox.checked){
-        showAlertError();
-    }
-}
-
-function inputValidation(){ //validar campos
-
-    let count = 0;
+//Validacion de inputs
+function inputValidation(){
+    count = 0;
     for (input of inputArray){
-        if(input.value==""){
-            count ++;
-        } 
-    }
-    if (count !== 0){
-        showAlertError();
-    }
+        if(input.value == ""){ 
+          count++
+        }
+    } 
+    return count==0;
+
+};
+
+//Validacion de checkbox
+function checkboxValidation(){
+    return checkbox.checked
+   
 }
 
-// regBtn.addEventListener("click", function(){
-//     inputValidation();
-//     checkboxValidation()
-// })
+//Validacion del tamaño de las contraseñas e igualdad
+function passwords(){
+   return  (password1.value == password2.value && password1.value.length>=6)
+}
 
 
 
-function passwordsAreEqual(){
-    if (document.getElementById("password1").value !== document.getElementById("password2").value) {
-        showAlertError();
-        // console.log("incorrecto");
-    } else if (document.getElementById("password1").value === document.getElementById("password2").value) {
+//Evento del boton que valida todo lo anterior
+regBtn.addEventListener("click", function(){
+    if (inputValidation() && checkboxValidation() && passwords()){
         showAlertSuccess();
-        // console.log("confirmación");
+    } else {
+        showAlertError();
     }
-}
-
-function fullValidation(){
-    inputValidation();
-    checkboxValidation();
-    passwordsAreEqual();
-}
-
-let form = document.querySelector("form");
-form.addEventListener("submit", fullValidation);
+});
 
 
